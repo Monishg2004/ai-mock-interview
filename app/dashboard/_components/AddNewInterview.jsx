@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -36,6 +37,7 @@ function AddNewInterview() {
 
   const [jsonResponse, setJsonResponse] = useState([]);
   const { user } = useUser();
+  const router = useRouter();
 
   const onSubmit = async (e) => {
     setLoading(true);
@@ -88,6 +90,7 @@ function AddNewInterview() {
       jobExperience: "",
     });
     setOpenDialog(false);
+    router.push(`/dashboard/interview/${resp[0]?.mockId}`);
     setLoading(false);
   };
 

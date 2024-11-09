@@ -1,29 +1,57 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
-import React from "react";
 
 const Header = () => {
+  const path = usePathname();
+
   return (
-    <div>
-      <div className="flex items-center">
+    <div className="flex py-4 px-5 items-center justify-between bg-secondary shadow-sm">
+      <div className="flex items-center mr-4">
         <Image
           src={"/logo.svg"}
-          width={40}
+          width={30}
           height={60}
           alt="ai-interview mocker"
-          className="mr-5"
+          className="mr-3 w-8"
         />
 
         <h1>AI Interview Mocker</h1>
-
-        <ul>
-          <li>Dashboard</li>
-          <li>Questions</li>
-          <li>Upgrade</li>
-          <li>How it Works?</li>
-        </ul>
-        <UserButton />
       </div>
+
+      <ul className="hidden md:flex items-center gap-6">
+        <li
+          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
+            path == "/dashboard" && "text-primary font-semibold"
+          }`}
+        >
+          Dashboard
+        </li>
+        <li
+          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
+            path == "/dashboard/questions" && "text-primary font-semibold"
+          }`}
+        >
+          Questions
+        </li>
+        <li
+          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
+            path == "/dashboard/upgrade" && "text-primary font-semibold"
+          }`}
+        >
+          Upgrade
+        </li>
+        <li
+          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
+            path == "/dashboard/howitworks" && "text-primary font-semibold"
+          }`}
+        >
+          How it Works?
+        </li>
+        <UserButton />
+      </ul>
     </div>
   );
 };

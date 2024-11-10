@@ -38,6 +38,16 @@ const Feedback = () => {
     }
   }, []);
 
+  const averageRating =
+    feedbackList && feedbackList.length > 0
+      ? (
+          feedbackList.reduce((sum, item) => {
+            const rating = parseFloat(item.rating.split("/")[0]);
+            return !isNaN(rating) && rating > 0 ? sum + rating : sum;
+          }, 0) / feedbackList.length
+        ).toFixed(1)
+      : "N/A";
+
   return (
     <div className="p-10">
       {feedbackList.length === 0 ? (
@@ -51,7 +61,7 @@ const Feedback = () => {
             Here is your interview feedback
           </h2>
           <h2 className="text-primary text-lg">
-            Your overall interview rating: <strong>7/10</strong>
+            Your overall interview rating: <strong>{averageRating}/5</strong>
           </h2>
           <h2 className="text-sm text-gray-500">
             Find below interview question with correct answer, Your answer and

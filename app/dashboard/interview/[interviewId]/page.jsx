@@ -10,6 +10,7 @@ import { Lightbulb, WebcamIcon } from "lucide-react";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
+import Link from "next/link";
 
 const Interview = () => {
   const params = useParams();
@@ -32,8 +33,6 @@ const Interview = () => {
       console.log(params.interviewId);
       GetInterviewDetails();
     }
-
-    GetInterviewDetails();
   }, [params.interviewId]);
 
   return (
@@ -94,7 +93,9 @@ const Interview = () => {
       </div>
 
       <div className="flex justify-end items-end">
-        <Button>Start Interview</Button>
+        <Link href={`/dashboard/interview/${params.interviewId}/start`}>
+          <Button>Start Interview</Button>
+        </Link>
       </div>
     </div>
   );

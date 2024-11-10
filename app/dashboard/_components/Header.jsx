@@ -24,28 +24,31 @@ const Header = () => {
       <ul className="hidden md:flex items-center gap-6">
         <li
           className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard" && "text-primary font-semibold"
+            path == "/dashboard" && "text-primary font-semibold transition-all"
           }`}
         >
           Dashboard
         </li>
         <li
           className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard/questions" && "text-primary font-semibold"
+            path == "/dashboard/questions" &&
+            "text-primary font-semibold transition-all"
           }`}
         >
           Questions
         </li>
         <li
           className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard/upgrade" && "text-primary font-semibold"
+            path == "/dashboard/upgrade" &&
+            "text-primary font-semibold transition-all"
           }`}
         >
           Upgrade
         </li>
         <li
           className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard/howitworks" && "text-primary font-semibold"
+            path == "/dashboard/howitworks" &&
+            "text-primary font-semibold transition-all"
           }`}
         >
           How it Works?

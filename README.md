@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🤖 AI Mock Interview Platform
 
-## Getting Started
+An AI-powered mock interview platform designed to help users practice their interview skills and receive instant feedback. This project allows users to interact with AI-generated interview questions and get real-time assessments and feedback on their responses.
 
-First, run the development server:
+## [Live Link](https://quest-ai-eight.vercel.app/dashboard)
+
+## ✨ Features
+
+- 🎤 **Interactive Mock Interviews**: Users can record answers to interview questions.
+- 💬 **AI-Generated Feedback**: Gemini AI analyzes user responses and provides ratings and feedback.
+- 🔒 **Security & Authentication**: Clerk is used to securely manage user authentication.
+- 📱 **Responsive Design**: Built with Next.js and React for a smooth, responsive user experience.
+- 🗄️ **Database Management**: Drizzle ORM integrated with NeonDB for efficient data handling.
+
+## 🛠️ Tech Stack
+
+- ⚡ **Next.js**: Used as the main framework for the project.
+- ⚛️ **React**: Responsible for building a responsive and dynamic user interface.
+- 🗄️ **Drizzle ORM**: Used for database management and querying.
+- 💾 **NeonDB**: Database used for storing mock interview data.
+- 🧠 **Gemini AI**: Integrated for generating AI-powered
+
+## 🚀 Getting Started
+
+### 1. Clone the repository:
+
+```bash
+git clone https://github.com/danielace1/ai-mock-interview.git
+```
+
+### 2. Navigate to the project directory:
+
+```bash
+cd ai-mock-interview
+```
+
+### 3. Install dependencies:
+
+```bash
+npm install
+```
+
+### 4. Set up environment variables:
+
+- Create a .env.local file and add your environment variables:
+
+```bash
+NEXT_PUBLIC_CLERK_FRONTEND_API=<Your Clerk API Key>
+CLERK_API_KEY=<Your Clerk Backend API Key>
+GEMINI_API_KEY=<Your Gemini API Key>
+DATABASE_URL=<Your NeonDB connection URL>
+```
+
+### 5. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 6. Open your browser and visit http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔮 Future Improvements
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 📄 **Resume Upload Feature**: Users can upload their resumes for AI-driven feedback, similar to ATS systems.
+- 🧑‍💻 **Score Analysis**: Provide users with detailed scores on their resume and interview performance.
+- 📝 **Custom Interview Sets**: Users can create their own sets of interview questions for personalized practice.
 
-## Learn More
+## 🤝 Contribution
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! Feel free to fork this repository, [open issues](https://github.com/danielace1/ai-mock-interview/issues), or submit [pull requests](https://github.com/danielace1/ai-mock-interview/pulls).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📜 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is open-source and available under the [MIT](./License) License.
 
-## Deploy on Vercel
+#### 💡 Feel free to reach out if you have any questions or ideas to improve the platform!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Sudharsan](https://www.facebook.com/sudharsandaniel01)

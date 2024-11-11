@@ -1,6 +1,24 @@
-import { SignIn } from "@clerk/nextjs";
+"use client";
+
+import { SignIn, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page() {
+  const { isSignedIn } = useUser();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push("/dashboard");
+    }
+  }, [isSignedIn]);
+
+  if (isSignedIn) {
+    return null;
+  }
+
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -69,7 +87,7 @@ export default function Page() {
               </p>
             </div>
 
-            <SignIn />
+            <SignIn fallbackRedirectUrl="/dashboard" />
           </div>
         </main>
       </div>

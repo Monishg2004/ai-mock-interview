@@ -99,7 +99,9 @@ const Feedback = () => {
             ))}
         </>
       )}
-      <Button onClick={() => router.replace("/dashboard")}>Go Home</Button>
+      <Button onClick={() => router.replace("/dashboard")} className="mt-3">
+        Go Home
+      </Button>
     </div>
   );
 };

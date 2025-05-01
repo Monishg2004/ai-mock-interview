@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "AI Mock Interview - Practice with AI-Powered Feedback",
+  title: "AI Interview Mocker - Practice with AI-Powered Feedback",
   description:
     "An interactive platform for users to practice mock interviews and receive AI-generated feedback to enhance their skills.",
   keywords:

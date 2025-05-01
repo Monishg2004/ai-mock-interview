@@ -101,80 +101,67 @@ function AddNewInterview() {
   return (
     <div>
       <div
-        className="p-10 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all"
+        className="p-10 border-2 border-dashed rounded-xl bg-white hover:bg-gray-100 hover:shadow-lg transition-all text-center cursor-pointer"
         onClick={() => setOpenDialog(true)}
       >
-        <h2 className="text-lg text-center">+ Add New</h2>
+        <h2 className="font-medium text-gray-700">+ Add New Interview</h2>
       </div>
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="max-w-xl">
+        <DialogContent className="max-w-2xl p-6">
           <DialogHeader>
-            <DialogTitle className="text-2xl">
-              Tell us more about your job Interviewing
+            <DialogTitle className="text-2xl font-semibold">
+              Plan Your Mock Interview
             </DialogTitle>
-            <DialogDescription>
-              <form onSubmit={onSubmit}>
-                <div>
-                  <h2>
-                    Add Details about your job position/role, job description
-                    and years of experience.
-                  </h2>
-                  <div className="mt-7 my-3.5">
-                    <label htmlFor="jobrole" className="block mb-2">
-                      Job Role/Job Position
-                    </label>
-                    <Input
-                      placeholder="Eg. Fullstack Developer"
-                      onChange={(e) => setJobPosition(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="my-3.5">
-                    <label htmlFor="jobdesc" className="block mb-2">
-                      Job Description/Tech Stack (In Short)
-                    </label>
-                    <Textarea
-                      placeholder="Eg. React, Angular, NodeJs, Mysql etc"
-                      onChange={(e) => setJobDesc(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="my-3.5">
-                    <label htmlFor="jobrole" className="block mb-2">
-                      Years of Experience
-                    </label>
-                    <Input
-                      placeholder="Eg. 5"
-                      type="number"
-                      max="50"
-                      onChange={(e) => setJobExperience(e.target.value)}
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-x-5 justify-end">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => setOpenDialog(false)}
-                    className="outline-none border-none"
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" disabled={loading}>
-                    {loading ? (
-                      <>
-                        <LoaderCircle className="animate-spin" />
-                        Generating from AI
-                      </>
-                    ) : (
-                      "Start Interview"
-                    )}
-                  </Button>
-                </div>
-              </form>
+            <DialogDescription className="text-sm text-gray-500">
+              Fill in the job role, tech stack, and experience to get
+              AI-generated interview questions.
             </DialogDescription>
+            <form onSubmit={onSubmit} className="space-y-6 mt-6">
+              <div>
+                <label className="block mb-2 font-medium">Job Role</label>
+                <Input
+                  placeholder="e.g., Frontend Developer"
+                  onChange={(e) => setJobPosition(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">Tech Stack</label>
+                <Textarea
+                  placeholder="e.g., React, TypeScript, TailwindCSS"
+                  onChange={(e) => setJobDesc(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium">
+                  Years of Experience
+                </label>
+                <Input
+                  type="number"
+                  placeholder="e.g., 2"
+                  max="50"
+                  onChange={(e) => setJobExperience(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="flex justify-end gap-4 pt-4">
+                <Button variant="ghost" onClick={() => setOpenDialog(false)}>
+                  Cancel
+                </Button>
+                <Button type="submit" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <LoaderCircle className="animate-spin mr-2 h-4 w-4" />
+                      Generating...
+                    </>
+                  ) : (
+                    "Start Interview"
+                  )}
+                </Button>
+              </div>
+            </form>
           </DialogHeader>
         </DialogContent>
       </Dialog>

@@ -2,60 +2,52 @@
 
 import { usePathname } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 import Image from "next/image";
+
+const navItems = [
+  { label: "Dashboard", href: "/dashboard" },
+  { label: "Questions", href: "/dashboard/questions" },
+  { label: "Upgrade", href: "/dashboard/upgrade" },
+  { label: "How it Works?", href: "/dashboard/howitworks" },
+];
 
 const Header = () => {
   const path = usePathname();
 
   return (
-    <div className="flex py-4 px-5 items-center justify-between bg-secondary shadow-sm">
-      <div className="flex items-center mr-4">
+    <header className="flex py-4 px-5 md:px-8 items-center justify-between bg-secondary shadow-sm">
+      <Link href="/dashboard" className="flex items-center">
         <Image
-          src={"/logo.svg"}
+          src="/logo.svg"
           width={30}
-          height={60}
-          alt="ai-interview mocker"
+          height={30}
+          alt="AI Interview Mocker"
           className="mr-3 w-8"
         />
+        <span className="font-semibold text-lg">AI Interview Mocker</span>
+      </Link>
 
-        <h1>AI Interview Mocker</h1>
-      </div>
+      <nav className="hidden md:flex items-center gap-6">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`transition-all hover:text-primary hover:underline ${
+              path === item.href
+                ? "text-primary font-semibold"
+                : "text-muted-foreground"
+            }`}
+          >
+            {item.label}
+          </Link>
+        ))}
 
-      <ul className="hidden md:flex items-center gap-6">
-        <li
-          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard" && "text-primary font-semibold transition-all"
-          }`}
-        >
-          Dashboard
-        </li>
-        <li
-          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard/questions" &&
-            "text-primary font-semibold transition-all"
-          }`}
-        >
-          Questions
-        </li>
-        <li
-          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard/upgrade" &&
-            "text-primary font-semibold transition-all"
-          }`}
-        >
-          Upgrade
-        </li>
-        <li
-          className={`hover:text-primary hover:font-semibold transition-all cursor-pointer ${
-            path == "/dashboard/howitworks" &&
-            "text-primary font-semibold transition-all"
-          }`}
-        >
-          How it Works?
-        </li>
-        <UserButton />
-      </ul>
-    </div>
+        <div className="ml-4">
+          <UserButton />
+        </div>
+      </nav>
+    </header>
   );
 };
 

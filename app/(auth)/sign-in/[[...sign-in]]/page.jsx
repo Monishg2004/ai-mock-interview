@@ -94,3 +94,402 @@ export default function Page() {
     </section>
   );
 }
+// "use client";
+
+// import { SignIn, useUser } from "@clerk/nextjs";
+// import { useRouter } from "next/navigation";
+// import { useEffect, useState } from "react";
+// import { 
+//   Brain, 
+//   Code, 
+//   Target, 
+//   Users, 
+//   Award, 
+//   Sparkles, 
+//   Star, 
+//   Heart, 
+//   Rocket,
+//   LoaderCircle,
+//   AlertTriangle,
+//   CheckCircle,
+//   Wand2,
+//   Crown,
+//   Zap
+// } from "lucide-react";
+
+// export default function Page() {
+//   const { isSignedIn, isLoaded } = useUser();
+//   const router = useRouter();
+//   const [isRedirecting, setIsRedirecting] = useState(false);
+//   const [sparkleAnimation, setSparkleAnimation] = useState(false);
+
+//   useEffect(() => {
+//     const sparkleInterval = setInterval(() => {
+//       setSparkleAnimation(true);
+//       setTimeout(() => setSparkleAnimation(false), 1000);
+//     }, 3000);
+//     return () => clearInterval(sparkleInterval);
+//   }, []);
+
+//   useEffect(() => {
+//     if (isLoaded && isSignedIn) {
+//       setIsRedirecting(true);
+//       // Add a small delay to prevent infinite redirects
+//       const timer = setTimeout(() => {
+//         router.push("/dashboard");
+//       }, 100);
+//       return () => clearTimeout(timer);
+//     }
+//   }, [isSignedIn, isLoaded, router]);
+
+//   // Show loading state while checking authentication
+//   if (!isLoaded || isRedirecting) {
+//     return (
+//       <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-cyan-50 flex items-center justify-center p-6">
+//         {/* Floating decorative elements */}
+//         <div className="fixed top-10 left-10 w-4 h-4 bg-pink-300 rounded-full animate-bounce opacity-60"></div>
+//         <div className="fixed top-20 right-20 w-3 h-3 bg-purple-300 rounded-full animate-pulse opacity-60"></div>
+//         <div className="fixed bottom-20 right-40 w-3 h-3 bg-cyan-300 rounded-full animate-ping opacity-60"></div>
+        
+//         <div className="text-center">
+//           <div className="relative group">
+//             <div className="absolute -inset-4 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 rounded-3xl opacity-30 blur-xl"></div>
+//             <div className="relative bg-gradient-to-br from-white via-pink-50/50 to-purple-50/50 rounded-3xl shadow-2xl p-12 border-2 border-white/50 backdrop-blur-sm">
+//               <div className="p-6 bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 rounded-2xl shadow-xl mb-6 w-fit mx-auto">
+//                 <LoaderCircle className="w-12 h-12 text-white animate-spin" />
+//               </div>
+//               <h2 className="text-2xl font-black bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+//                 {isRedirecting ? "Redirecting to Dashboard..." : "Loading..."}
+//               </h2>
+//               <div className="flex items-center justify-center gap-2">
+//                 <Sparkles className="w-5 h-5 text-purple-400 animate-pulse" />
+//                 <span className="text-gray-600 font-medium">Please wait</span>
+//                 <Sparkles className="w-5 h-5 text-pink-400 animate-pulse" />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   if (isSignedIn) {
+//     return null;
+//   }
+
+//   return (
+//     <section className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-cyan-50">
+//       {/* Floating decorative elements */}
+//       <div className="fixed top-10 left-10 w-4 h-4 bg-pink-300 rounded-full animate-bounce opacity-60"></div>
+//       <div className="fixed top-20 right-20 w-3 h-3 bg-purple-300 rounded-full animate-pulse opacity-60"></div>
+//       <div className="fixed top-32 left-32 w-2 h-2 bg-cyan-300 rounded-full animate-ping opacity-60"></div>
+//       <div className="fixed bottom-20 right-40 w-3 h-3 bg-yellow-300 rounded-full animate-bounce opacity-60"></div>
+//       <div className="fixed bottom-32 left-20 w-2 h-2 bg-green-300 rounded-full animate-pulse opacity-60"></div>
+
+//       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
+        
+//         {/* Left Side - Hero Section */}
+//         <section className="relative flex h-32 items-end bg-gradient-to-br from-gray-900 via-purple-900 to-pink-900 lg:col-span-5 lg:h-full xl:col-span-6">
+          
+//           {/* Background Image with Overlay */}
+//           <div className="absolute inset-0">
+//             <img
+//               alt="AI Interview Mocker"
+//               src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+//               className="h-full w-full object-cover opacity-40"
+//             />
+//             <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-pink-900/30 to-cyan-900/50"></div>
+//           </div>
+
+//           {/* Floating decorative elements on hero */}
+//           <div className="absolute top-20 left-20 w-6 h-6 bg-pink-400/30 rounded-full animate-bounce"></div>
+//           <div className="absolute top-40 right-32 w-4 h-4 bg-purple-400/30 rounded-full animate-pulse"></div>
+//           <div className="absolute bottom-40 left-40 w-5 h-5 bg-cyan-400/30 rounded-full animate-ping"></div>
+
+//           <div className="hidden lg:relative lg:block lg:p-12 z-10">
+            
+//             {/* Logo */}
+//             <div className="relative group mb-8">
+//               <div className="absolute -inset-2 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 rounded-2xl opacity-50 blur-lg"></div>
+//               <div className="relative bg-gradient-to-br from-white/10 to-purple-500/20 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+//                 <div className="flex items-center gap-3">
+//                   <div className="p-2 bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 rounded-xl shadow-xl">
+//                     <Brain className="w-8 h-8 text-white" />
+//                   </div>
+//                   <div>
+//                     <h3 className="text-xl font-black text-white">AI Interview</h3>
+//                     <p className="text-white/80 text-sm font-medium">Mocker Platform</p>
+//                   </div>
+//                   {sparkleAnimation && (
+//                     <Sparkles className="w-6 h-6 text-yellow-400 animate-spin ml-auto" />
+//                   )}
+//                 </div>
+//               </div>
+//             </div>
+
+//             <h2 className="text-4xl font-black text-white mb-6 leading-tight">
+//               Welcome to 
+//               <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+//                 AI Interview Mocker ✨
+//               </span>
+//             </h2>
+
+//             <p className="text-xl leading-relaxed text-white/90 font-medium mb-8">
+//               Master your interview skills with AI-powered practice sessions. 
+//               Get personalized feedback and ace your next opportunity! 🚀
+//             </p>
+
+//             {/* Feature highlights */}
+//             <div className="space-y-4">
+//               <div className="flex items-center gap-3">
+//                 <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg shadow-lg">
+//                   <CheckCircle className="w-5 h-5 text-white" />
+//                 </div>
+//                 <span className="text-white font-bold">Real-time AI feedback</span>
+//               </div>
+//               <div className="flex items-center gap-3">
+//                 <div className="p-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg shadow-lg">
+//                   <Target className="w-5 h-5 text-white" />
+//                 </div>
+//                 <span className="text-white font-bold">Tailored practice sessions</span>
+//               </div>
+//               <div className="flex items-center gap-3">
+//                 <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-lg">
+//                   <Award className="w-5 h-5 text-white" />
+//                 </div>
+//                 <span className="text-white font-bold">Performance analytics</span>
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Right Side - Sign In Form */}
+//         <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+//           <div className="max-w-xl lg:max-w-3xl w-full">
+            
+//             {/* Mobile Header */}
+//             <div className="relative -mt-16 block lg:hidden mb-8">
+//               <div className="text-center">
+//                 <div className="relative group inline-block mb-6">
+//                   <div className="absolute -inset-3 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 rounded-3xl opacity-30 blur-xl"></div>
+//                   <div className="relative inline-flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 text-white shadow-2xl">
+//                     <Brain className="w-10 h-10" />
+//                     {sparkleAnimation && (
+//                       <div className="absolute -top-2 -right-2">
+//                         <Sparkles className="w-6 h-6 text-yellow-400 animate-spin" />
+//                       </div>
+//                     )}
+//                   </div>
+//                 </div>
+
+//                 <h1 className="text-3xl font-black bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent mb-4 flex items-center justify-center gap-2">
+//                   <Star className="w-7 h-7 text-yellow-400 animate-pulse" />
+//                   AI Interview Mocker
+//                   <Heart className="w-7 h-7 text-pink-400 animate-pulse" />
+//                 </h1>
+
+//                 <p className="text-lg leading-relaxed text-gray-600 font-medium">
+//                   Practice makes perfect. Let's refine your interview skills together! ✨
+//                 </p>
+//               </div>
+//             </div>
+
+//             {/* Sign In Section */}
+//             <div className="relative group">
+//               <div className="absolute -inset-4 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 rounded-3xl opacity-20 blur-2xl"></div>
+//               <div className="relative bg-gradient-to-br from-white via-pink-50/30 to-purple-50/30 rounded-3xl shadow-2xl border-2 border-white/50 backdrop-blur-sm overflow-hidden">
+                
+//                 {/* Decorative elements */}
+//                 <div className="absolute top-6 right-6 w-4 h-4 bg-pink-300 rounded-full animate-bounce opacity-60"></div>
+//                 <div className="absolute top-10 right-12 w-3 h-3 bg-purple-300 rounded-full animate-pulse opacity-60"></div>
+//                 <div className="absolute bottom-6 left-6 w-3 h-3 bg-cyan-300 rounded-full animate-ping opacity-60"></div>
+
+//                 {/* Header */}
+//                 <div className="bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-cyan-500/10 p-8 border-b border-purple-100">
+//                   <div className="text-center">
+//                     <div className="flex items-center justify-center gap-3 mb-4">
+//                       <div className="p-3 bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 rounded-xl shadow-xl">
+//                         <Rocket className="w-8 h-8 text-white" />
+//                       </div>
+//                     </div>
+                    
+//                     <h2 className="text-3xl font-black bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent mb-3">
+//                       Welcome Back! 👋
+//                     </h2>
+                    
+//                     <p className="text-gray-600 font-medium flex items-center justify-center gap-2">
+//                       <Wand2 className="w-4 h-4 text-purple-500" />
+//                       Sign in to continue your interview mastery journey
+//                       <Sparkles className="w-4 h-4 text-pink-500" />
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 {/* Sign In Form Container */}
+//                 <div className="p-8">
+//                   <div className="relative">
+                    
+//                     {/* Custom styling for Clerk SignIn component */}
+//                     <style jsx global>{`
+//                       .cl-rootBox {
+//                         width: 100%;
+//                       }
+//                       .cl-card {
+//                         background: transparent !important;
+//                         box-shadow: none !important;
+//                         border: none !important;
+//                       }
+//                       .cl-headerTitle {
+//                         color: #7c3aed !important;
+//                         font-weight: 800 !important;
+//                         font-size: 1.5rem !important;
+//                       }
+//                       .cl-headerSubtitle {
+//                         color: #6b7280 !important;
+//                         font-weight: 500 !important;
+//                       }
+//                       .cl-formFieldInput {
+//                         border-radius: 12px !important;
+//                         border: 2px solid #e5e7eb !important;
+//                         padding: 12px 16px !important;
+//                         font-weight: 500 !important;
+//                         transition: all 0.3s ease !important;
+//                       }
+//                       .cl-formFieldInput:focus {
+//                         border-color: #8b5cf6 !important;
+//                         box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+//                       }
+//                       .cl-formButtonPrimary {
+//                         background: linear-gradient(to right, #ec4899, #8b5cf6, #06b6d4) !important;
+//                         border: none !important;
+//                         border-radius: 12px !important;
+//                         padding: 12px 24px !important;
+//                         font-weight: 700 !important;
+//                         font-size: 1rem !important;
+//                         transition: all 0.3s ease !important;
+//                         text-transform: none !important;
+//                       }
+//                       .cl-formButtonPrimary:hover {
+//                         transform: scale(1.05) !important;
+//                         box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3) !important;
+//                       }
+//                       .cl-socialButtonsBlockButton {
+//                         border-radius: 12px !important;
+//                         border: 2px solid #e5e7eb !important;
+//                         padding: 12px !important;
+//                         font-weight: 600 !important;
+//                         transition: all 0.3s ease !important;
+//                       }
+//                       .cl-socialButtonsBlockButton:hover {
+//                         border-color: #8b5cf6 !important;
+//                         transform: translateY(-2px) !important;
+//                         box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15) !important;
+//                       }
+//                       .cl-dividerLine {
+//                         background: linear-gradient(to right, #ec4899, #8b5cf6, #06b6d4) !important;
+//                         height: 2px !important;
+//                       }
+//                       .cl-dividerText {
+//                         background: linear-gradient(to right, #ec4899, #8b5cf6, #06b6d4) !important;
+//                         -webkit-background-clip: text !important;
+//                         background-clip: text !important;
+//                         color: transparent !important;
+//                         font-weight: 700 !important;
+//                       }
+//                       .cl-footerActionLink {
+//                         color: #8b5cf6 !important;
+//                         font-weight: 600 !important;
+//                       }
+//                       .cl-footerActionLink:hover {
+//                         color: #7c3aed !important;
+//                       }
+//                       .cl-alert {
+//                         border-radius: 12px !important;
+//                         border: 2px solid #fca5a5 !important;
+//                         background: #fef2f2 !important;
+//                       }
+//                       .cl-alertText {
+//                         color: #dc2626 !important;
+//                         font-weight: 500 !important;
+//                       }
+//                     `}</style>
+
+//                     <SignIn 
+//                       fallbackRedirectUrl="/dashboard"
+//                       signUpUrl="/sign-up"
+//                       appearance={{
+//                         elements: {
+//                           rootBox: "w-full",
+//                           card: "bg-transparent shadow-none border-0",
+//                           headerTitle: "text-2xl font-black text-purple-600",
+//                           headerSubtitle: "text-gray-600 font-medium",
+//                           socialButtonsBlockButton: "border-2 border-gray-200 hover:border-purple-400 rounded-xl font-semibold transition-all duration-300",
+//                           formButtonPrimary: "bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 border-0 rounded-xl font-bold transition-all duration-300 transform hover:scale-105",
+//                           formFieldInput: "rounded-xl border-2 border-gray-200 focus:border-purple-400 font-medium transition-all duration-300",
+//                           footerActionLink: "text-purple-600 hover:text-purple-700 font-semibold"
+//                         }
+//                       }}
+//                     />
+//                   </div>
+//                 </div>
+
+//                 {/* Bottom Features */}
+//                 <div className="bg-gradient-to-r from-gray-50/50 via-purple-50/50 to-pink-50/50 p-6 border-t border-purple-100">
+//                   <div className="grid grid-cols-3 gap-4">
+//                     <div className="text-center">
+//                       <div className="p-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg w-fit mx-auto mb-2 shadow-lg">
+//                         <Code className="w-4 h-4 text-white" />
+//                       </div>
+//                       <p className="text-xs font-bold text-gray-700">Tech Interviews</p>
+//                     </div>
+//                     <div className="text-center">
+//                       <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg w-fit mx-auto mb-2 shadow-lg">
+//                         <Users className="w-4 h-4 text-white" />
+//                       </div>
+//                       <p className="text-xs font-bold text-gray-700">Behavioral Q&A</p>
+//                     </div>
+//                     <div className="text-center">
+//                       <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg w-fit mx-auto mb-2 shadow-lg">
+//                         <Crown className="w-4 h-4 text-white" />
+//                       </div>
+//                       <p className="text-xs font-bold text-gray-700">AI Feedback</p>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* Trust Indicators */}
+//             <div className="mt-8 text-center">
+//               <div className="relative group inline-block">
+//                 <div className="absolute -inset-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl opacity-20 blur-lg"></div>
+//                 <div className="relative bg-gradient-to-br from-white via-green-50/30 to-emerald-50/30 rounded-2xl shadow-xl border-2 border-white/50 backdrop-blur-sm p-4">
+//                   <div className="flex items-center justify-center gap-6">
+//                     <div className="flex items-center gap-2">
+//                       <div className="p-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
+//                         <CheckCircle className="w-4 h-4 text-white" />
+//                       </div>
+//                       <span className="text-sm font-bold text-gray-700">Secure & Private</span>
+//                     </div>
+//                     <div className="flex items-center gap-2">
+//                       <div className="p-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
+//                         <Zap className="w-4 h-4 text-white" />
+//                       </div>
+//                       <span className="text-sm font-bold text-gray-700">Instant Feedback</span>
+//                     </div>
+//                     <div className="flex items-center gap-2">
+//                       <div className="p-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
+//                         <Star className="w-4 h-4 text-white" />
+//                       </div>
+//                       <span className="text-sm font-bold text-gray-700">AI Powered</span>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </main>
+//       </div>
+//     </section>
+//   );
+// }
